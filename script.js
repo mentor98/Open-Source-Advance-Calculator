@@ -21,16 +21,13 @@ function setInput(value) {
     display.value = currentInput;
 }
 function appendToDisplay(value) {
-    // A digit after an answer starts a new calculation.
     if (startNewNumber && /^[0-9.]$/.test(value)) currentInput = '';
     setInput(currentInput + value);
 }
 function evaluateExpression(expression) {
-    // Only allow characters and names that calculator buttons can add.
     const valid = /^[0-9pi+\-*/^().\s]+$/i.test(expression);
     if (!valid) throw new Error('Invalid expression');
 
-    // Add missing multiplication signs and convert xʸ to JavaScript power.
     const normalizedExpression = expression.replace(/\s+/g, '')
         .replace(/(\d|\)|pi)(?=\(|pi)/g, '$1*')
         .replace(/(\)|pi)(?=\d|\()/g, '$1*')
