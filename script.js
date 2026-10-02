@@ -1,6 +1,5 @@
 // Find the screen where the calculator shows numbers and answers.
 const display = document.getElementById('display');
-// Find the calculator so one click handler can listen to all its buttons.
 const calculator = document.querySelector('.calculator');
 let currentInput = '';
 let startNewNumber = false;
